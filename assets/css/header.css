@@ -1,0 +1,48 @@
+a, a:active, a:visited {
+    text-decoration: none;
+    color:aliceblue;
+}
+
+.navbar {
+    background-color: slateblue;
+    width: 100%;
+    height: 70px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.navbar-title, .navbar-title:visited {
+    font-size: x-large;
+    font-weight: 600;
+    color:aliceblue;
+}
+
+.navbar-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.navbar-header {
+    width: 50%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 20px;
+}
+
+.navbar-items {
+    width: 70%;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.navbar-items li {
+    margin: 20px;
+}

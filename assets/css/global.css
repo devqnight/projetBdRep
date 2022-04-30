@@ -1,0 +1,12 @@
+@import 'header.css';
+
+* {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.container {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    padding: 20px;
+}

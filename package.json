@@ -1,0 +1,21 @@
+{
+  "name": "db_project_kaczmarek_sibille",
+  "version": "1.0.0",
+  "description": "app to connect to oracle db",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"no test specified\"",
+    "start": "node app.js"
+  },
+  "author": "Night4dead",
+  "license": "ISC",
+  "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "ejs": "^3.1.7",
+    "express": "^4.18.1",
+    "express-session": "^1.17.2",
+    "oracledb": "^5.3.0",
+    "passport": "^0.5.2",
+    "path": "^0.12.7"
+  }
+}
