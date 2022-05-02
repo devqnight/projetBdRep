@@ -1,0 +1,7 @@
+//const DATABASECONNECTION = "";
+
+module.exports = {
+    user            : '',
+    password        : '',
+    connectString   : ''
+}
