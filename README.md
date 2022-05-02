@@ -14,6 +14,7 @@
 ### Prérequis 
 
 - installer nodejs sur sa machine (version >= 16)
+- installer instantclient sur sa machine ([suivre guide](https://oracle.github.io/node-oracledb/INSTALL.html#instzip))
 - cloner le repo
 
 ### Démarrage

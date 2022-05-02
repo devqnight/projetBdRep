@@ -1,0 +1,55 @@
+<%- include('../_partials/_header') %>
+
+    <div>
+        <h1>
+            <%= name %>
+        </h1>
+        <div>Total : <%= total[0].TOTAL %>
+        </div>
+    </div>
+
+    <div>
+        <h3>Répartition : </h3>
+        <div>
+            <% repartitions.forEach(function(rep) { %>
+                <div>
+                    <%= rep.account %> : <%= rep.rep %>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+
+    <div>
+        <h3>Comptes :</h3>
+        <table>
+            <tr>
+                <th>Numéro de compte</th>
+                <th>Nom client</th>
+                <th>Date ouverture</th>
+                <th>Solde</th>
+                <th>PMVR</th>
+            </tr>
+            <% accounts.forEach(function(user){ %>
+                <tr>
+                    <td>
+                        <%= user.NUMCOMPTE %>
+                    </td>
+                    <td>
+                            <%= user.NOMCLIENT %>
+                    </td>
+                    <td>
+                        <%= Intl.DateTimeFormat('fr-FR', { year: 'numeric' , month: 'long' , day: '2-digit'
+                            }).format(user.DATEOUVERTURE) %>
+                    </td>
+                    <td>
+                        <%= user.SOLDE %>
+                    </td>
+                    <td>
+                        <%= user.PMVR %>
+                    </td>
+                </tr>
+                <% }); %>
+        </table>
+    </div>
+
+    <%- include('../_partials/_footer') %>

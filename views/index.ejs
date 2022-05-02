@@ -1,5 +1,54 @@
 <%- include('_partials/_header') %>
+    <div>
+        <h1>
+            Stocks : 
+        </h1>
+        <div>
+            <table>
+                <tr>
+                    <th>Code</th>
+                    <th>Dénomination</th>
+                    <th>Secteur</th>
+                    <th>Indice</th>
+                    <th>Cours</th>
+                </tr>
+                <% stocks.forEach(function(stock){ %>
+                    <tr>
+                        <td><%= stock.CODEVALEUR %></td>
+                        <td><%= stock.DENOMINATION %></td>
+                        <td><%= stock.SECTEURECONOMIQUE %></td>
+                        <td><%= stock.INDICE %></td>
+                        <td><%= stock.COURS %></td>
+                    </tr>
+                <% }); %>
+            </table>
+        </div>
+    </div>
 
-    <h1>Welcome</h1>
+    <div>
+        <h1>
+            Utilisateurs : 
+        </h1>
+        <div>
+            <table>
+                <tr>
+                    <th>Numéro de compte</th>
+                    <th>Nom client</th>
+                    <th>Date ouverture</th>
+                    <th>Solde</th>
+                    <th>PMVR</th>
+                </tr>
+                <% users.forEach(function(user){ %>
+                    <tr>
+                        <td><%= user.NUMCOMPTE %></td>
+                        <td><a class="button" type="button" href="/home/<%= user.NOMCLIENT %>"><%= user.NOMCLIENT %></a></td>
+                        <td><%= Intl.DateTimeFormat('fr-FR', { year: 'numeric', month: 'long', day: '2-digit'}).format(user.DATEOUVERTURE) %></td>
+                        <td><%= user.SOLDE %></td>
+                        <td><%= user.PMVR %></td>
+                    </tr>
+                <% }); %>
+            </table>
+        </div>
+    </div>
 
 <%- include('_partials/_footer') %>

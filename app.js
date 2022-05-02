@@ -3,32 +3,9 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var passport = require('passport');
 var session = require('express-session');
-var oracle = require('oracledb');
+var oracle = require('./params/oracle');
 
 var app = express();
-
-const run = async () => {
-    let connection;
-
-    try {
-        connection = await oracle.getConnection({});
-
-        console.info('successfully connected to oracle db');
-    } catch (err) {
-        console.error(err);
-    } finally {
-        if(connection){
-            try {
-                await connection.close();
-            } catch (err) {
-                console.error(err);
-            }
-        }
-    }
-};
-
-//run();
-
 
 app.set("port", process.env.PORT || 3000);
 
@@ -43,4 +20,14 @@ app.listen(app.get('port'), () => {
     console.log("Server started on port : ", app.get('port'));
 });
 
+process.once('SIGTERM', async (code) => {
+    console.log(`About to exit with code: ${code}`);
+    await oracle.closePoolAndExit();
+  });
+
+//process
+//    .once('SIGTERM', oracle.closePoolAndExit())
+//    .once('SIGINT', oracle.closePoolAndExit());
+
+oracle.init();
 
