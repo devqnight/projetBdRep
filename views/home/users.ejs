@@ -1,0 +1,50 @@
+<%- include('../_partials/_header') %>
+    <div class="full section">
+        <h1 class="section-title">
+            Utilisateurs : 
+        </h1>
+        <div class="section-table">
+            <table>
+                <tr>
+                    <th>Numéro de compte</th>
+                    <th>Nom client</th>
+                    <th>Date ouverture</th>
+                    <th>Solde</th>
+                    <th>PMVR</th>
+                </tr>
+                <% users.forEach(function(user){ %>
+                    <tr>
+                        <td><%= user.NUMCOMPTE %></td>
+                        <td><a class="user-button" type="button" href="/home/<%= user.NOMCLIENT %>"><%= user.NOMCLIENT %></a></td>
+                        <td><%= Intl.DateTimeFormat('fr-FR', { year: 'numeric', month: 'long', day: '2-digit'}).format(user.DATEOUVERTURE) %></td>
+                        <td><%= user.SOLDE %></td>
+                        <td><%= user.PMVR %></td>
+                    </tr>
+                <% }); %>
+            </table>
+        </div>
+    </div>
+
+    <div class="main section">
+        <h3 class="section-title">Ajouter un utilisateur : </h3>
+        <div class="section-container">
+            <% if(error) { %>
+                <div class="section-error">
+                    <%= error %>
+                </div>
+                <% } %>
+                    <form class="section-form" method="POST" action="/addUser">
+                        <div class="section-form-field">
+                            <label>Nom client : </label>
+                            <input name="client" class="form-control" id="client-input" type="text" value="" />
+                        </div>
+                        <div class="section-form-field">
+                            <label>Montant initial : </label>
+                            <input name="initial" class="form-control" id="initial-input" type="number" step="0.01"
+                                value="0" />
+                        </div>
+                        <input type="submit" class="button" value="Valider" />
+                    </form>
+        </div>
+    </div>
+<%- include('../_partials/_footer') %>

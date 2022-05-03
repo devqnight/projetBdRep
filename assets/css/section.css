@@ -1,0 +1,66 @@
+.section {
+    width: 65%;
+    background-color: lavender;
+    border-radius: 10px;
+    border-right: 1px solid slateblue;
+    border-bottom: 1px solid slateblue;
+    margin: 10px;
+}
+
+.section-title {
+    width: 100%;
+    text-align: center;
+    color: white;
+    background-color: slateblue;
+    position: relative;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    top: 0;
+    left: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin: 0;
+}
+
+.section-container {
+    padding: 20px;
+}
+
+.section-table {
+    padding-bottom: 10px;
+    width: 100%;
+}
+
+.section-error {
+    padding: 10px;
+    background-color: linen;
+    border-radius: 10px;
+    border: 1px solid red;
+    color: red;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.section-form {
+
+}
+
+.section-form-field {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.section-form-field label {
+    width: 40%;
+}
+
+.section-form-field select {
+    width: 50%;
+}
+
+.section-form-field input {
+    width: 50%;
+
+}

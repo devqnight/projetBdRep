@@ -1,0 +1,20 @@
+.profile-title {
+    display: flex;
+    width: 100vw;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: lavender;
+}
+
+.profile-title-name {
+    padding: 20px;
+    width: 60%;
+}
+
+.profile-title-total {
+    padding: 20px;
+    text-align: center;
+    width: 40%;
+    font-weight: 600;
+    font-size: 20px;
+}

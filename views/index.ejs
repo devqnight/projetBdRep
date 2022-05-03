@@ -1,9 +1,9 @@
 <%- include('_partials/_header') %>
-    <div>
-        <h1>
+    <div class="full section">
+        <h1 class="section-title">
             Stocks : 
         </h1>
-        <div>
+        <div class="section-table">
             <table>
                 <tr>
                     <th>Code</th>
@@ -19,32 +19,6 @@
                         <td><%= stock.SECTEURECONOMIQUE %></td>
                         <td><%= stock.INDICE %></td>
                         <td><%= stock.COURS %></td>
-                    </tr>
-                <% }); %>
-            </table>
-        </div>
-    </div>
-
-    <div>
-        <h1>
-            Utilisateurs : 
-        </h1>
-        <div>
-            <table>
-                <tr>
-                    <th>Numéro de compte</th>
-                    <th>Nom client</th>
-                    <th>Date ouverture</th>
-                    <th>Solde</th>
-                    <th>PMVR</th>
-                </tr>
-                <% users.forEach(function(user){ %>
-                    <tr>
-                        <td><%= user.NUMCOMPTE %></td>
-                        <td><a class="button" type="button" href="/home/<%= user.NOMCLIENT %>"><%= user.NOMCLIENT %></a></td>
-                        <td><%= Intl.DateTimeFormat('fr-FR', { year: 'numeric', month: 'long', day: '2-digit'}).format(user.DATEOUVERTURE) %></td>
-                        <td><%= user.SOLDE %></td>
-                        <td><%= user.PMVR %></td>
                     </tr>
                 <% }); %>
             </table>

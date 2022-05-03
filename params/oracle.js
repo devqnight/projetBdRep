@@ -78,7 +78,48 @@ async function doQuery(query) {
     }
 }
 
-async function doProc(proc, params) { }
+async function doProc(proc, params) {
+    let connection;
+
+    try {
+        connection = await oracle.getConnection();
+
+        let sqlProc = `BEGIN ` + proc + `(` + params.txt + `); ` + `END;`;
+        
+        await connection.execute(
+            sqlProc,
+            params.objects,
+            {
+                autoCommit: true
+            }
+        );
+    } catch (err) {
+        console.error(err);
+        return err;
+    } finally {
+        let res = []
+        if (connection) {
+            try {
+                let result;
+                do {
+                  result = await connection.execute(
+                    `BEGIN
+                       DBMS_OUTPUT.GET_LINE(:ln, :st);
+                     END;`,
+                    { ln: { dir: oracle.BIND_OUT, type: oracle.STRING, maxSize: 32767 },
+                      st: { dir: oracle.BIND_OUT, type: oracle.NUMBER } });
+                  if (result.outBinds.st === 0)
+                    console.log(result.outBinds.ln);
+                    res.push(result.outBinds.ln);
+                } while (result.outBinds.st === 0);
+                await connection.close();
+            } catch (err) {
+                console.error(err);
+            }
+        }
+        return res;
+    }
+}
 
 async function doProcWithOutput(proc, params) {
     let connection;

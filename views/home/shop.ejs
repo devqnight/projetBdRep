@@ -1,0 +1,88 @@
+<%- include('../_partials/_header') %>
+    <div class="main section">
+        <h3 class="section-title">Effectuer une opération : </h3>
+        <div class="section-container">
+            <% if(error) { %>
+                <div class="section-error">
+                    <%= error %>
+                </div>
+                <% } %>
+                    <form class="section-form" method="POST" action="/transaction">
+                        <div class="section-form-field">
+                            <label>Compte : </label>
+                            <select name="compte" class="form-control" id="compte-select">
+                                <% comptes.forEach((compte)=> { %>
+                                    <option value="<%= compte.NUMCOMPTE %>">
+                                        <%= compte.NOMCLIENT %> - <%= compte.NUMCOMPTE %>
+                                    </option>
+                                    <% }) %>
+                            </select>
+                        </div>
+                        <div class="section-form-field">
+                            <label>Action : </label>
+                            <select name="action" class="form-control" id="action-select">
+                                <% actions.forEach((action)=> { %>
+                                    <option value="<%= action.CODEVALEUR %>">
+                                        <%= action.DENOMINATION %> - <%= action.CODEVALEUR %>
+                                    </option>
+                                    <% }) %>
+                            </select>
+                        </div>
+                        <div class="section-form-field">
+                            <label>Type : </label>
+                            <select name="type" class="form-control" id="type-select">
+                                <option value="A">Achat</option>
+                                <option value="V">Vente</option>
+                            </select>
+                        </div>
+                        <div class="section-form-field">
+                            <label>Montant : </label>
+                            <input name="montant" class="form-control" id="montant-input" type="number" step="0.001"
+                                value="0" />
+                        </div>
+                        <div class="section-form-field">
+                            <label>Quantité : </label>
+                            <input name="quantite" class="form-control" id="quantite-input" type="number" step="1"
+                                value="0" />
+                        </div>
+                        <input type="submit" class="button" value="Valider" />
+                    </form>
+        </div>
+    </div>
+
+    <div class="secondary section">
+        <h2 class="section-title">Opérations : </h2>
+        <div class="section-table">
+            <table>
+                <tr>
+                    <th>Code</th>
+                    <th>Date</th>
+                    <th>Nature</th>
+                    <th>Quantité</th>
+                    <th>Montant</th>
+                </tr>
+                <% operations.forEach((operation)=> { %>
+                    <tr>
+                        <td>
+                            <%= operation.CODEVALEUR %>
+                        </td>
+                        <td>
+                            <%= Intl.DateTimeFormat('fr-FR', { year: 'numeric' , month: 'numeric' , day: '2-digit' ,
+                                hour: 'numeric' , minute: 'numeric' }).format(operation.DATEOP) %>
+                        </td>
+                        <td>
+                            <%= operation.NATURE %>
+                        </td>
+                        <td>
+                            <%= operation.QTEOP %>
+                        </td>
+                        <td>
+                            <%= operation.MONTANT %>
+                        </td>
+                    </tr>
+                    <% }) %>
+            </table>
+        </div>
+    </div>
+
+    <%- include('../_partials/_footer') %>
