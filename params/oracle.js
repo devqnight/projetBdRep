@@ -6,7 +6,7 @@ async function init() {
     try {
         let libpath;
         if (process.platform === 'win32')
-            libpath = 'C:\\oracle\\instantclient_11_2';
+            libpath = 'C:\oracle\instantclient_11_2';
         else
             libpath = '/opt/installs/instantclient_11_2';
         if (libpath && fs.existsSync(libpath))

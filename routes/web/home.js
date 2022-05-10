@@ -41,8 +41,11 @@ router.post("/addUser", async (req, res) => {
             }
         }
     );
-
-    res.redirect("/users?error="+error[0]);
+    if (error[0] !== null) {
+      res.redirect("/users?error="+error[0]);
+    } else {
+      res.redirect("/users");
+    }
 })
 
 router.get("/home/:username", async (req, res) => {
@@ -113,7 +116,11 @@ router.post("/transaction", async (req, res, next) => {
         }
     );
 
-    res.redirect("/shop?error="+error[0]);
+    if (error[0] !== null) {
+       res.redirect("/shop?error="+error[0]);
+    } else {
+        res.redirect("/shop");
+      }
 });
 
 router.get("/about", (req, res) => {
